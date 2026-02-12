@@ -1,11 +1,17 @@
-const path = require("path");
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  webpack(config: { resolve: { alias: { [x: string]: any } } }) {
-    config.resolve.alias["@"] = path.resolve(__dirname);
+const nextConfig: NextConfig = {
+  // пустая конфигурация Turbopack
+  turbopack: {},
+
+  // кастомный webpack, если нужен
+  webpack: (config, { isServer }) => {
+    // любые твои кастомизации
     return config;
   },
+
+  // явно указываем корень для output tracing
+  outputFileTracingRoot: __dirname,
 };
 
-module.exports = nextConfig;
+export default nextConfig;
