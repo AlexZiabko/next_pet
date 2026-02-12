@@ -1,14 +1,5 @@
-import type { NextConfig } from "next";
-import path from "path";
+import { NextConfig } from "next";
 
-const nextConfig = {
-  experimental: {
-    turbopack: false,
-  },
-  webpack: (config: any) => {
-    config.resolve.alias["@"] = path.resolve(__dirname);
-    return config;
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
